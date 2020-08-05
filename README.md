@@ -68,68 +68,62 @@
     + [Endre farge på matchet tekst i combobox](#endre-farge-p--matchet-tekst-i-combobox)
 
 
-## Hva er Form-controls?
-Dette er et CSS/JS bibliotek for cross-browser-styling av checkboxer, radioknapper, inputfelter og knapper.
-Samt funksjonalitet for å formattere innhold og begrense hvilke og hvor mange tegn som skal tillates i inputfelter, og for å vise riktig keypad på mobile enheter.
-Biblioteket inneholder også funksjonalitet for å lage comboboxer (søk/fritekst i dropdown) og modals (dialoger).
+## What is Form Controls?
+Form Controls is a library for cross-bowser styling of checkboxes, radio buttons, input fields and buttons. The library includes functionality which formats content, limits the amount of characters that should be allowed in an input field, or show the right keypad on mobile devices.  In addition to functionality that can be used to make comboboxes (search fields / text in dropdown) and modals. 
 
-Hovedformålet med biblioteket er først og fremst funksjonalitet. Derfor er stylingen ganske minimal, siden det visuelle uttrykket ofte skiler seg fra løsning til løsning. Avhengig av kundens grafiske profil mm.
+The purpose of this library is mainly to apply various functionality to your form. Styling has not been a priority, because styling differ in various projects depending on customers current graphical profile. 
 
-Biblioteket bruker [jQuery](https://jquery.com/) og jQuery Mask Plugin [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/).
+jQuery[jQuery](https://jquery.com/) and jQuery Mask Plugin [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/) are used in this library. .
 
 
-## Bruk
-For å bruke biblioteket må filene:
+## How to use it
+
+In order to use this library, you will have to add these files: 
 * **form-controls.min.js**
 * **form-controls.min.css**
 * **jquery.mask.min.js**
 
-Legges inn under på *C:\Tomcat\WEBAPPS*. I en mappe som heter **form-controls** på frontend-serveren.
-OBS! Dersom det er snakk om en eldre server (før 20.04.2020) skal dette inn under mappen *C:\Tomcat\WEBAPPS_CONTAINER* eller. *C:\Tomcat\WEBAPPS CONTAINER*. Se hva du finner. 
+Add it under C:\Tomcat\WEBAPPS in folder **form-controls** on the frontend-server you are using. PS! If this is an older server (before 04/20/2020) place it in the folder C:\Tomcat\WEBAPPS_CONTAINER or C:\Tomcat\WEBAPPS CONTAINER. It is important that files are placed in the right directory. 
 
-Så må det legges til en deployment descriptor for mappen **form-controls**:
-1. Last ned **form-controls.xml** (https://github.com/MetafocusAS/form-controls/blob/master/form-controls.xml)
-2. Putt **form-controls.xml** på *C:\Tomcat\apache-tomcat-7.0.75\conf\Catalina\localhost* (OBS! versjonsnummer på *apache-tomcat-7.0.75* skiller seg sannsynligvis!) på frontend-serveren.
-OBS! Dersom det er snakk om en eldre server (før 20.04.2020) og filene nevnt over er lagt i mappen *C:\Tomcat\WEBAPPS_CONTAINER* eller *C:\Tomcat\WEBAPPS CONTAINER*. må xml-filen du har lastet ned her åpnes og endres til å peke på samme path.
+A deployment descriptor must be added to folder **form-controls**:
+1. Download **form-controls.xml** (https://github.com/MetafocusAS/form-controls/blob/master/form-controls.xml)
+2. Add **form-controls.xml** to *C:\Tomcat\apache-tomcat-7.0.75\conf\Catalina\localhost* (PS! the version number of *apache-tomcat-7.0.75* will vary) on the front-end server. 
 
-For å ta i bruk biblioteket i digiforms må du inkludere (Document settings > Includes):
+It is best to include these files *before* you include other stylesheets, so it does not override other stylesheets. Open and close the browser to see if the script is successfully added (you do not have to restart the Tomcat application on your server). 
+
+To use the library in Digiforms Designer you will have to include it in the document or component you want to add it to. Add it like this: (Document settings > Includes):
 * **../form-controls/form-controls.min.js**
 * **../form-controls/form-controls.min.css**
 
-Det er ofte best å inkludere disse *før* du inkluderer annen CSS, sånn at styling fra form-controls blir enkel å overstyre.
-Lukk og åpne browser på nytt for å sikre at nytt script tas i bruk av tjenesten der den er inkludert (det ikke er nødvendig å restarte Tomcat på server).
+The files in countries.zip should be added to the filepath **Datasource/Countries/** in folder **WEBAPPS/ROOT** to prevent error messages. Countries_xx_XX.xml is a list of countries that is used in the combobox function. 
 
-(JQuery må også være inkludert men det allerede er inkludert i digiforms)
-
-Filene i countries.zip bør legges til i filbanen **Datasources/Countries/** i mappen **WEBAPPS/ROOT** for å unngå feilmeldinger. Countries_xx_XX.xml er lister over land som er en dependency for funksjonen combobox countries.
 
 ## Demo
 [https://dev4.digiforms.no/digiforms/htmlViewer?documentName=form-controls-demo](https://dev4.digiforms.no/digiforms/htmlViewer?documentName=form-controls-demo)
 
 ## Browser support
-Biblioteket er testet og fungerer i siste versjon av følgende nettlesere:
+The library is tested and is working in these browsers: 
 * Chrome
 * Firefox
 * Opera
 * Edge
-* IE 11
+* Internet Explorer 11
 * Safari
 
-Biblioteket er også testet på litt forskjellige mobile enheter (iPhone og Android)
+It is also tested on some mobile devices (iPhone and Android). 
 
 
-
-## Checkboxer og radioknapper
-* Klassene styler checkboxene/radioknappene sånn at de blir litt penere, og ser like ut i alle browsere
-* De er har også en større "click area" som gjør det litt lettere å treffe de med musepekeren
-
-
-### Checkboxer
-* Groupboxen (div rundt fieldset) rundt må ha klassen **checkbox-container**
-* div rundt checkbox og label må ha klassen **control-row** og **checkbox-row** (OBS! i Digiforms Designer kalles denne div'en "Label")
+## Checkboxes og radio buttons
+* The css-classes are applied to the radio buttons to make them look appealing, but also to make them look identical in all browsers.
+* They have a bigger “click area” which makes them easier to hit with the mouse pointer.
 
 
-#### Hvordan plassere klassene
+### Checkboxes
+* The groupbox (div) around the checkboxes must have the class **checkbox-container**
+* Apply css-classes **control-row** and **checkbox-row** to the groupbox (div) which is placed around the checkboxes. (PS! in Digiforms Designer this div is called 'a "Label")
+
+
+#### Here is how to apply classes to checkboxes
 ![Figur som viser hvordan klassene for checkboxer skal brukes](https://user-images.githubusercontent.com/5544597/79964786-7cf56900-848b-11ea-92e7-02db7975a6a6.png)
 
 #### HTML
@@ -158,12 +152,12 @@ Biblioteket er også testet på litt forskjellige mobile enheter (iPhone og Andr
 ![Figur som viser hvordan checkboxer blir seendes ut](https://user-images.githubusercontent.com/5544597/79965453-5126b300-848c-11ea-86bd-237e71f385dc.png)
 
 
-### Radioknapper
-* Groupboxen (div rundt fieldset) rundt må ha klassen **radio-container**
-* div rundt radioknapp og label må ha klassen **control-row** og **radio-row**
+### Radio buttons
+* Apply the css-class **radio-container** on the groupbox around the radio buttons.
+* Apply the css-classes **control-row** og **radio-row** to the ‘div’ around the radio buttons. 
 
 
-#### Hvordan plassere klassene
+#### Here is how to apply classes to radio buttons
 ![Figur som viser hvordan klassene for radioknapper skal brukes](https://user-images.githubusercontent.com/5544597/79965317-2b011300-848c-11ea-978d-677b40272ad7.png)
 
 #### HTML
@@ -192,13 +186,11 @@ Biblioteket er også testet på litt forskjellige mobile enheter (iPhone og Andr
 
 
 
-## Inputfelter
+## Input fields
 
 
 ### Dropdowns (select)
-* Må ligge inne i en div med klassen: **select-container**. Pass på at det ikke ligger noen andre elementer inne i **select-container** enn selve dropdownen (+ tilhørende label og containeren rundt disse). Den må heller ikke ha noen margin eller padding.
-* Bruk klassen **input-field** på selve input-feltet. Det gir en *grunnleggende styling* som gjør at den ser lik ut i forskjellige browsere.
-
+* Apply class **select-container** to the groupbox around the dropdown. There should be no other elements inside **select-container** except the dropdown (both label and groupbox around). Furthermore, there should not be added any padding or margin to the container. 
 
 #### Hvordan plassere klasser på en dropdown (select)
 ![Figur som viser hvordan klassene for inputfelter skal brukes](https://user-images.githubusercontent.com/5544597/79987385-a0311000-84ad-11ea-8c61-53765c67b888.png)
